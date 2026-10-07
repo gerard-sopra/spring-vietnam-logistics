@@ -19,6 +19,12 @@ pipeline {
                 archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
             }
         }
+
+        stage('Build Docker Image') {
+            steps {
+                sh 'docker build -t vietnam-logistics:latest .'
+            }
+        }
     }
 
     post {
