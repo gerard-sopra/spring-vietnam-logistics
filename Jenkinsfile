@@ -10,7 +10,7 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh './mvnw clean package'
+                sh './mvnw clean package -Dspring.kafka.bootstrap-servers=host.docker.internal:29092'
             }
         }
     }
