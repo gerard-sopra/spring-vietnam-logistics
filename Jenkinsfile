@@ -13,6 +13,12 @@ pipeline {
                 sh './mvnw clean package -Dspring.kafka.bootstrap-servers=host.docker.internal:29092'
             }
         }
+
+        stage('Archive Artifact') {
+            steps {
+                archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
+            }
+        }
     }
 
     post {
